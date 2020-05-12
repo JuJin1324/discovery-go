@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/jujin/discovery-go/chapter1/seq"
+	"github.com/JuJin1324/discovery-go/chapter1/seq"
 )
 
 func main() {

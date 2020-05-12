@@ -32,3 +32,8 @@
 /bin/stress
 /bin/stringer
 /bin/toolstash
+/.idea/.gitignore
+/.idea/discovery-go.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
