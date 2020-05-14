@@ -8,13 +8,16 @@ import (
 	"strings"
 )
 
-func WriteTo(w io.Writer, lines []string) error {
+func WriteTo(w io.Writer, lines []string) (n int64, err error) {
 	for _, line := range lines {
-		if _, err := fmt.Fprintln(w, line); err != nil {
-			return err
+		var nw int
+		nw, err = fmt.Fprintln(w, line)
+		n += int64(nw)
+		if err != nil {
+			return
 		}
 	}
-	return nil
+	return
 }
 
 func ReadFrom(r io.Reader, lines *[]string) error {
@@ -34,7 +37,7 @@ func ExampleWriteTo() {
 		"tom@mail.com",
 		"jane@mail.com",
 	}
-	if err := WriteTo(os.Stdout, lines); err != nil {
+	if _, err := WriteTo(os.Stdout, lines); err != nil {
 		fmt.Println(err)
 	}
 	// Output:
