@@ -2,7 +2,7 @@ package practice
 
 import (
 	"fmt"
-	"github.com/JuJin1324/discovery-go/chapter3/multiSet"
+	"github.com/jujin/discovery-go/chapter3/multiSet"
 	"strings"
 )
 

@@ -1,6 +1,7 @@
 package multiSet
 
 type MultiSet map[string]int
+type SetOp func(m MultiSet, val string)
 
 func NewMultiSet() MultiSet {
 	return make(map[string]int)
@@ -30,4 +31,10 @@ func String(m MultiSet) string {
 	s += "}"
 
 	return s
+}
+
+func InsertFunc(m MultiSet) func(val string) {
+	return func(val string) {
+		Insert(m, val)
+	}
 }
