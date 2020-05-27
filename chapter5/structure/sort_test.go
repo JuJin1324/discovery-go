@@ -4,6 +4,7 @@ import (
 	"container/heap"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -56,4 +57,50 @@ func ExampleCaseInsensitive_heap() {
 	// iPad
 	// iPhone
 	// MacBook
+}
+
+func ExampleCaseInsensitive_heapString() {
+	apple := CaseInsensitive([]string{
+		"iPhone", "iPad", "MacBook", "AppStore",
+	})
+	heap.Init(&apple)
+	for apple.Len() > 0 {
+		popped := heap.Pop(&apple)
+		s := popped.(string)
+		fmt.Println(s)
+	}
+	// Output:
+	// AppStore
+	// iPad
+	// iPhone
+	// MacBook
+}
+
+func ExampleJoin() {
+	t := Task{
+		Title:    "Laundry",
+		Status:   DONE,
+		Deadline: nil,
+	}
+	fmt.Println(Join(",", 1, "two", 3, t))
+	// Output:
+	// 1,two,3,[v] Laundry <nil>
+}
+
+func Join(sep string, a ...interface{}) string {
+	if len(a) == 0 {
+		return ""
+	}
+	t := make([]string, len(a))
+	for i := range a {
+		switch x := a[i].(type) {
+		case string:
+			t[i] = x
+		case int:
+			t[i] = strconv.Itoa(x)
+		case fmt.Stringer:
+			t[i] = x.String()
+		}
+	}
+	return strings.Join(t, sep)
 }
