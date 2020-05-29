@@ -99,7 +99,7 @@ func apiDeleteHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-var tmpl = template.Must(template.ParseGlob("/Users/ju-jinyoo/Documents/dev/workspace-go/src/github.com/jujin/discovery-go/chapter6/TaskMan/html/*.html"))
+var tmpl = template.Must(template.ParseGlob("./chapter6/TaskMan/html/*.html"))
 
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
